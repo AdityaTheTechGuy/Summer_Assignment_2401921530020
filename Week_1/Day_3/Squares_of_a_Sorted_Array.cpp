@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    vector<int> sortedSquares(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> result(n);
+        
+        int left = 0;
+        int right = n - 1;
+        int index = n - 1; // Fill result array from right to left
+        
+        while (left <= right) {
+            int leftSquare = nums[left] * nums[left];
+            int rightSquare = nums[right] * nums[right];
+            
+            if (leftSquare > rightSquare) {
+                result[index] = leftSquare;
+                left++; // Move left boundary inward
+            } else {
+                result[index] = rightSquare;
+                right--; // Move right boundary inward
+            }
+            index--; // Move result index to the left
+        }
+        
+        return result;
+    }
+};
