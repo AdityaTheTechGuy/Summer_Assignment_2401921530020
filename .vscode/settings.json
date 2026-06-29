@@ -1,0 +1,7 @@
+{
+    "code-runner.runInTerminal": true,
+    "code-runner.saveFileBeforeRun": true,
+    "code-runner.executorMap": {
+        "java": "cd \"$workspaceRoot\"; javac -d . \"$fullFileName\"; java Week_4.OOPs.$fileNameWithoutExt"
+    }
+}

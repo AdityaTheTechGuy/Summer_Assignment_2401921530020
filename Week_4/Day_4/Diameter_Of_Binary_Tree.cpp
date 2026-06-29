@@ -12,20 +12,17 @@ struct TreeNode {
 
 class Solution {
 public:
-    int checkBalance(TreeNode* root) {
+    int diameter = 0;
+    int maxDepth(TreeNode* root) {
         if (!root) return 0;
+        int left = maxDepth(root->left);
+        int right = maxDepth(root->right);
         
-        int leftH = checkBalance(root->left);
-        if (leftH == -1) return -1;
-        
-        int rightH = checkBalance(root->right);
-        if (rightH == -1) return -1;
-        
-        if (abs(leftH - rightH) > 1) return -1;
-        return 1 + max(leftH, rightH);
+        diameter = max(diameter, left + right);
+        return 1 + max(left, right);
     }
-    
-    bool isBalanced(TreeNode* root) {
-        return checkBalance(root) != -1;
+    int diameterOfBinaryTree(TreeNode* root) {
+        maxDepth(root);
+        return diameter;
     }
 };
